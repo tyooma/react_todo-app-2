@@ -1,11 +1,7 @@
 import React, { useRef } from 'react';
+import { TodoFormProps } from '../interfaces/TodoFormProps';
 
-interface Props {
-  onAdd(title: string): void;
-  backgroundChanger(): void;
-}
-
-export const TodoForm: React.FC<Props> = (props) => {
+export const TodoForm: React.FC<TodoFormProps> = (props) => {
   const ref = useRef<HTMLInputElement>(null);
 
   const keyPressHandler = (event: React.KeyboardEvent) => {

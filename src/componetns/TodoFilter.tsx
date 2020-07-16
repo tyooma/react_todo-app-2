@@ -1,13 +1,7 @@
 import React from 'react';
-import { Todo } from '../interfaces/Todo';
+import { TodoFilterProps } from '../interfaces/TodoFilterProps';
 
-interface Props{
-  todos: Todo[];
-  onFilter(shown: string): void;
-  onClear(): void;
-}
-
-export const TodoFilter: React.FC<Props> = ({ todos, onFilter, onClear }) => (
+export const TodoFilter: React.FC<TodoFilterProps> = ({ todos, onFilter, onClear }) => (
   <footer className="footer">
     <span className="count">
       {`${todos.filter(todo => todo.completed === false).length} items left`}

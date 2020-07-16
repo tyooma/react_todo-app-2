@@ -1,13 +1,27 @@
 import React from 'react';
-import { Todo } from '../interfaces/Todo';
+import { TodoListProps } from '../interfaces/TodoListProps';
 
-type Props = {
-  todos: Todo[];
-  onToggle(id: number): void;
-  onRemove(id: number): void;
-};
+export const TodoList: React.FC<TodoListProps> = ({
+  todos, selectedFilter, onToggle, onRemove,
+}) => {
+  const showItems = (filter: string) => {
+    if (filter === 'all') {
+      return todos;
+    }
 
-export const TodoList: React.FC<Props> = ({ todos, onToggle, onRemove }) => {
+    if (filter === 'active') {
+      todos = todos.filter(todo => todo.completed === false);
+    }
+
+    if (filter === 'completed') {
+      todos = todos.filter(todo => todo.completed === true);
+    }
+
+    return null;
+  };
+
+  showItems(selectedFilter);
+
   return (
     <ul>
       {todos.map(todo => {
