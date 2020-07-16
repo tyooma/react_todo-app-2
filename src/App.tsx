@@ -9,7 +9,7 @@ import './index.css';
 const App: React.FC = () => {
   const [todos, setTodos] = useState<TodoProps[]>([]);
   const [filter, setFilter] = useState<string>('all');
-  let [color, setColor] = useState<string>('');
+  const [color, setColor] = useState<string>('');
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem('todos') || '[]') as TodoProps[];
@@ -47,6 +47,20 @@ const App: React.FC = () => {
     setTodos(prev => prev.filter(todo => todo.id !== id));
   };
 
+  const checkAllHandler = () => {
+    if (todos.every(todo => todo.completed === true)) {
+      setTodos(prev => prev.map(todo => ({
+        ...todo,
+        completed: false,
+      })));
+    } else {
+      setTodos(prev => prev.map(todo => ({
+        ...todo,
+        completed: true,
+      })));
+    }
+  };
+
   const backgroundChanger = () => {
     const colors = colorList;
     const randomColor = colors.sort(() => Math.random() - 0.5);
@@ -69,6 +83,7 @@ const App: React.FC = () => {
         <TodoForm
           onAdd={addHandler}
           backgroundChanger={backgroundChanger}
+          checkAllHandler={checkAllHandler}
         />
         <TodoList
           todos={todos}

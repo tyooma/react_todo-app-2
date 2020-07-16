@@ -1,19 +1,22 @@
 import React, { useRef } from 'react';
 import { TodoFormProps } from '../interfaces/TodoFormProps';
 
-export const TodoForm: React.FC<TodoFormProps> = (props) => {
+export const TodoForm: React.FC<TodoFormProps> = ({ onAdd, backgroundChanger, checkAllHandler }) => {
   const ref = useRef<HTMLInputElement>(null);
 
   const keyPressHandler = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter') {
-      props.onAdd(ref.current!.value);
+      onAdd(ref.current!.value);
       ref.current!.value = '';
-      props.backgroundChanger();
+      backgroundChanger();
     }
   };
 
   return (
     <div className="input-field">
+      <i className="material-icons expand-icon" onClick={() => checkAllHandler()}>
+        expand_more
+      </i>
       <input
         type="text"
         id="title"

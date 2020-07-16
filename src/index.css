@@ -28,7 +28,15 @@ h1 {
 .input-field {
   margin: 0 auto;
 
-  width: 500px;
+  width: 470px;
+
+  display: flex;
+  align-items: center;
+}
+
+.expand-icon {
+  position: absolute;
+  left: -40px;
 }
 
 [type="checkbox"] + span:not(.lever) {
