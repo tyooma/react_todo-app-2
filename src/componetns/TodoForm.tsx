@@ -1,7 +1,9 @@
 import React, { useRef } from 'react';
 import { TodoFormProps } from '../interfaces/TodoFormProps';
 
-export const TodoForm: React.FC<TodoFormProps> = ({ onAdd, backgroundChanger, checkAllHandler }) => {
+export const TodoForm: React.FC<TodoFormProps> = ({
+  onAdd, backgroundChanger, checkAllHandler, color,
+}) => {
   const ref = useRef<HTMLInputElement>(null);
 
   const keyPressHandler = (event: React.KeyboardEvent) => {
@@ -14,7 +16,11 @@ export const TodoForm: React.FC<TodoFormProps> = ({ onAdd, backgroundChanger, ch
 
   return (
     <div className="input-field">
-      <i className="material-icons expand-icon" onClick={() => checkAllHandler()}>
+      <i
+        className="material-icons expand-icon"
+        onClick={() => checkAllHandler()}
+        style={{ backgroundColor: color }}
+      >
         expand_more
       </i>
       <input

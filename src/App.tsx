@@ -84,6 +84,7 @@ const App: React.FC = () => {
           onAdd={addHandler}
           backgroundChanger={backgroundChanger}
           checkAllHandler={checkAllHandler}
+          color={color}
         />
         <TodoList
           todos={todos}

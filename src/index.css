@@ -37,6 +37,15 @@ h1 {
 .expand-icon {
   position: absolute;
   left: -40px;
+
+  cursor: pointer;
+  border-radius: 50%;
+
+  transition: background-color 0.3s;
+}
+
+.expand-icon:hover {
+  background-color: rgb(206, 206, 206);
 }
 
 [type="checkbox"] + span:not(.lever) {
