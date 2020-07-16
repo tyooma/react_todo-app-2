@@ -9,12 +9,13 @@ interface Props{
 
 export const TodoFilter: React.FC<Props> = ({ todos, onFilter, onClear }) => (
   <footer className="footer">
-    <span className="todo-count">
+    <span className="count">
       {`${todos.filter(todo => todo.completed === false).length} items left`}
     </span>
     <ul className="filters">
       <li>
         <button
+          className="button"
           onClick={() => onFilter('all')}
           type="button"
         >
@@ -23,6 +24,7 @@ export const TodoFilter: React.FC<Props> = ({ todos, onFilter, onClear }) => (
       </li>
       <li>
         <button
+          className="button"
           type="button"
           onClick={() => onFilter('active')}
         >
@@ -31,6 +33,7 @@ export const TodoFilter: React.FC<Props> = ({ todos, onFilter, onClear }) => (
       </li>
       <li>
         <button
+          className="button"
           onClick={() => onFilter('completed')}
           type="button"
         >
@@ -40,7 +43,7 @@ export const TodoFilter: React.FC<Props> = ({ todos, onFilter, onClear }) => (
     </ul>
     <button
       type="button"
-      className="clear-completed"
+      className="clear-completed button"
       onClick={onClear}
     >
       Clear completed
